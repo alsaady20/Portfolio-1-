@@ -115,13 +115,46 @@ p{
     text-align: center;
     padding: 80px;
 }
+
 .headshot{
     width: 300px;
     border-radius: 150px;
 }
-.headshot-container{
-    display: flex;
-    align-items: center;
+
+.headshot-container {
+    position: relative;
+    display: inline-block; /* prevents full width stretching */
+    overflow: hidden;
+}
+
+
+.headshot-container img{
+    position: absolute;
+}
+
+/* First image (base image) */
+.headshot-container img:first-child {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: opacity 3s ease-in-out;
+    opacity: 1;
+}
+
+/* Second image overlays first */
+.headshot-container img:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+.fade-container{
+    padding: 10px;
 }
 
 .project-card{
@@ -203,4 +236,9 @@ a{
     .logo{
         display: none;
     }
+}
+
+#myImage{
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
 }
